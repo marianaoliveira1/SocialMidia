@@ -10,7 +10,16 @@ class LoginPage extends StatelessWidget {
       body: Stack(
         children: [
           DefaultGradientBackground(),
-          Column()
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20),
+            child: Column(
+              children: [
+                Text(
+                  "fl,md ff",
+                )
+              ],
+            ),
+          )
         ],
       ),
     );

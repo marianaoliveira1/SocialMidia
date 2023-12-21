@@ -9,11 +9,11 @@ class DefaultGradientBackground extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: [
-            DefaultColors.cinzaClaro,
             DefaultColors.cinzaEscuro,
+            DefaultColors.preto,
           ],
         ),
       ),

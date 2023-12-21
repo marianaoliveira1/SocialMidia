@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialmidia/pages/login/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Social Midia',
       debugShowCheckedModeBanner: false,
-      home: Container(),
+      home: LoginPage(),
     );
   }
 }
