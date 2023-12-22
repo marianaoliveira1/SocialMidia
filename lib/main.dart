@@ -7,6 +7,7 @@ import 'package:socialmidia/firebase_options.dart';
 import 'package:socialmidia/pages/home/home_page.dart';
 import 'package:socialmidia/pages/login/login_page.dart';
 import 'package:socialmidia/pages/register/register_page.dart';
+import 'package:socialmidia/routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,11 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Social Midia',
         debugShowCheckedModeBanner: false,
-        routes: {
-          '/login': (context) => const LoginPage(),
-          '/register': (context) => const RegisterPage(),
-          '/home': (context) => const HomePage(),
-        },
+        routes: Routes.routes,
         home: const LoginPage(),
       ),
     );
