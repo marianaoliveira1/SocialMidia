@@ -5,11 +5,13 @@ import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_button.dart';
 import 'package:socialmidia/widget/default_text_field.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final nameController = TextEditingController();
+    final usernameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
@@ -26,10 +28,10 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 190.h,
+                      height: 100.h,
                     ),
                     Text(
-                      "Login",
+                      "Cadastro",
                       style: GoogleFonts.raleway(
                         color: DefaultColors.branco,
                         fontSize: 30.sp,
@@ -38,6 +40,18 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 50.h,
+                    ),
+                    DefaultTextField(
+                      obscureText: false,
+                      controller: nameController,
+                      labelText: 'Maria',
+                      icon: Icons.person,
+                    ),
+                    DefaultTextField(
+                      obscureText: false,
+                      controller: usernameController,
+                      labelText: 'maria123',
+                      icon: Icons.person_pin_circle_sharp,
                     ),
                     DefaultTextField(
                       obscureText: false,
@@ -55,7 +69,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "Ainda não possi conta?  ",
+                          "Já possui conta? ",
                           style: GoogleFonts.raleway(
                             color: DefaultColors.branco,
                             fontSize: 14.sp,
@@ -64,10 +78,10 @@ class LoginPage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/register');
+                            Navigator.pushNamed(context, '/login');
                           },
                           child: Text(
-                            "Cadastrar",
+                            "Entrar",
                             style: GoogleFonts.raleway(
                               color: DefaultColors.branco,
                               fontSize: 14.sp,
@@ -78,7 +92,7 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                     DefaultButton(
-                      text: "Entrar",
+                      text: "Cadastro",
                     ),
                   ],
                 ),
