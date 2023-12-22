@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/utils/colors.dart';
+import 'package:socialmidia/widget/default_button.dart';
 import 'package:socialmidia/widget/default_text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,50 +10,72 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: DefaultColors.cinzaEscuro,
       body: Stack(
         children: [
           Container(
             margin: EdgeInsets.only(right: 20.h, left: 20.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: ListView(
               children: [
-                Text(
-                  "Login",
-                  style: GoogleFonts.raleway(
-                    color: DefaultColors.branco,
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                DefaultTextField(),
-                DefaultTextField(),
-                Container(
-                  margin: EdgeInsets.only(top: 10.h),
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.only(top: 15.h, bottom: 15.h),
-                      primary: DefaultColors.lilas,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 190.h,
                     ),
-                    child: Text(
-                      "Entrar",
+                    Text(
+                      "Login",
                       style: GoogleFonts.raleway(
                         color: DefaultColors.branco,
-                        fontSize: 16.sp,
+                        fontSize: 30.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    DefaultTextField(
+                      obscureText: false,
+                      controller: emailController,
+                      labelText: 'exemplo@email.com',
+                      icon: Icons.email,
+                    ),
+                    DefaultTextField(
+                      obscureText: true,
+                      controller: passwordController,
+                      labelText: 'senha',
+                      icon: Icons.lock,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Já possui conta? ",
+                          style: GoogleFonts.raleway(
+                            color: DefaultColors.branco,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          "Entrar",
+                          style: GoogleFonts.raleway(
+                            color: DefaultColors.branco,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    DefaultButton(
+                      text: "Entrar",
+                    ),
+                  ],
                 ),
               ],
             ),
