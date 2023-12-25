@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    DefaultButton(
+                    const DefaultButton(
                       text: "Entrar",
                     ),
                   ],

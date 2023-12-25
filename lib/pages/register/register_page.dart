@@ -91,7 +91,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    DefaultButton(
+                    const DefaultButton(
                       text: "Cadastro",
                     ),
                   ],
