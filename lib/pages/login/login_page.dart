@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_button.dart';
 import 'package:socialmidia/widget/default_text_field.dart';
+import 'package:socialmidia/widget/default_title_principal.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -28,14 +29,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 190.h,
                     ),
-                    Text(
-                      "Login",
-                      style: GoogleFonts.raleway(
-                        color: DefaultColors.branco,
-                        fontSize: 30.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const DefaultTitlePrincipal(text: 'Login'),
                     SizedBox(
                       height: 50.h,
                     ),
@@ -58,7 +52,7 @@ class LoginPage extends StatelessWidget {
                           "Ainda não possi conta?  ",
                           style: GoogleFonts.raleway(
                             color: DefaultColors.branco,
-                            fontSize: 14.sp,
+                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -70,12 +64,15 @@ class LoginPage extends StatelessWidget {
                             "Cadastrar",
                             style: GoogleFonts.raleway(
                               color: DefaultColors.branco,
-                              fontSize: 14.sp,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 0.17.sh,
                     ),
                     const DefaultButton(
                       text: "Entrar",

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_button.dart';
 import 'package:socialmidia/widget/default_text_field.dart';
+import 'package:socialmidia/widget/default_title_principal.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -30,14 +31,7 @@ class RegisterPage extends StatelessWidget {
                     SizedBox(
                       height: 100.h,
                     ),
-                    Text(
-                      "Cadastro",
-                      style: GoogleFonts.raleway(
-                        color: DefaultColors.branco,
-                        fontSize: 30.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const DefaultTitlePrincipal(text: 'Cadastro'),
                     SizedBox(
                       height: 50.h,
                     ),
@@ -72,7 +66,7 @@ class RegisterPage extends StatelessWidget {
                           "Já possui conta? ",
                           style: GoogleFonts.raleway(
                             color: DefaultColors.branco,
-                            fontSize: 14.sp,
+                            fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -84,12 +78,15 @@ class RegisterPage extends StatelessWidget {
                             "Entrar",
                             style: GoogleFonts.raleway(
                               color: DefaultColors.branco,
-                              fontSize: 14.sp,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 0.1.sh,
                     ),
                     const DefaultButton(
                       text: "Cadastro",
