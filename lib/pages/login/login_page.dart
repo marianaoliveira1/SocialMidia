@@ -1,6 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_button.dart';
 import 'package:socialmidia/widget/default_text_field.dart';
@@ -15,7 +19,24 @@ class LoginPage extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
-    void sinIn() {}
+    void sinIn() async {
+      final authService = Get.find<AuthController>();
+
+      try {
+        await authService.signInWithEmailAndPassword(
+          emailController.text,
+          passwordController.text,
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+            ),
+          ),
+        );
+      }
+    }
 
     return Scaffold(
       backgroundColor: DefaultColors.cinzaEscuro,
