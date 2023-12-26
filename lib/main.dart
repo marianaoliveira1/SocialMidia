@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/firebase_options.dart';
 
-import 'package:socialmidia/pages/login/login_page.dart';
 import 'package:socialmidia/pages/splash/splash_page.dart';
 
 import 'package:socialmidia/routes/routes.dart';

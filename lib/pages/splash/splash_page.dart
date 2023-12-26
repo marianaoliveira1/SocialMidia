@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:socialmidia/pages/login/login_page.dart';
 import 'package:socialmidia/utils/colors.dart';
@@ -34,6 +35,7 @@ class _SpashPageState extends State<SpashPage> {
       child: Center(
         child: Image.asset(
           "assets/social-media.png",
+          height: 100.h,
         ),
       ),
     );

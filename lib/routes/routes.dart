@@ -6,7 +6,7 @@ import 'package:socialmidia/pages/register/register_page.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> routes = {
-    '/': (context) => const HomePage(),
+    '/home': (context) => const HomePage(),
     '/login': (context) => const LoginPage(),
     '/register': (context) => const RegisterPage(),
     '/profile': (context) => const ProfilePage(),
