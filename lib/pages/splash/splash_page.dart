@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:socialmidia/services/auth/auth_gade.dart';
 
-import 'package:socialmidia/services/auth/login_our_register.dart';
 import 'package:socialmidia/utils/colors.dart';
 
 class SpashPage extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SpashPageState extends State<SpashPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const LoginOrRegister(),
+          builder: (context) => const AuthGade(),
         ),
       );
     });
