@@ -7,12 +7,15 @@ import 'package:socialmidia/widget/default_text_field.dart';
 import 'package:socialmidia/widget/default_title_principal.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final void Function()? onTap;
+  const LoginPage({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
+
+    void sinIn() {}
 
     return Scaffold(
       backgroundColor: DefaultColors.cinzaEscuro,
@@ -57,9 +60,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
+                          onTap: onTap,
                           child: Text(
                             "Cadastrar",
                             style: GoogleFonts.raleway(
@@ -74,8 +75,9 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 0.17.sh,
                     ),
-                    const DefaultButton(
+                    DefaultButton(
                       text: "Entrar",
+                      onPressed: sinIn,
                     ),
                   ],
                 ),

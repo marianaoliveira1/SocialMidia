@@ -5,9 +5,12 @@ import 'package:socialmidia/utils/colors.dart';
 
 class DefaultButton extends StatelessWidget {
   final String text;
+  final void Function()? onPressed;
+
   const DefaultButton({
     super.key,
     required this.text,
+    required this.onPressed,
   });
 
   @override
@@ -16,7 +19,7 @@ class DefaultButton extends StatelessWidget {
       margin: EdgeInsets.only(top: 10.h),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.only(top: 15.h, bottom: 15.h),
           backgroundColor: DefaultColors.branco,
