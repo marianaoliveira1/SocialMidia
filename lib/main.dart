@@ -6,6 +6,7 @@ import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/firebase_options.dart';
 
 import 'package:socialmidia/pages/login/login_page.dart';
+import 'package:socialmidia/pages/splash/splash_page.dart';
 
 import 'package:socialmidia/routes/routes.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Social Midia',
         debugShowCheckedModeBanner: false,
         routes: Routes.routes,
-        home: const LoginPage(),
+        home: const SpashPage(),
       ),
     );
   }
