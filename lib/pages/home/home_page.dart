@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
@@ -9,6 +10,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = Get.find<AuthController>();
+
+    final currentUser = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,6 +25,9 @@ class HomePage extends StatelessWidget {
             ),
           )
         ],
+      ),
+      body: Column(
+        children: [],
       ),
     );
   }
