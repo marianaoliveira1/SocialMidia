@@ -7,14 +7,14 @@ class DefaultTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String labelText;
   final bool obscureText;
-  final IconData icon;
+  final IconData? icon;
 
   const DefaultTextField({
     super.key,
     this.controller,
     required this.labelText,
     required this.obscureText,
-    required this.icon,
+    this.icon,
   });
 
   @override
