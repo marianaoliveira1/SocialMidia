@@ -56,25 +56,26 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: TextField(
                       controller: textController,
-                      style: GoogleFonts.raleway(
-                        color: DefaultColors.preto,
-                        fontSize: 16.sp,
-                      ),
                       decoration: InputDecoration(
-                        hintText: "Digite algo",
-                        hintStyle: GoogleFonts.raleway(
-                          color: Color(0xFF4B4949),
-                          fontSize: 16.sp,
-                        ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.r),
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.r),
-                          borderSide: const BorderSide(
-                            color: DefaultColors.preto,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary,
+                        hintStyle: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                        hintText: 'Digite o que esta pensando',
                       ),
                     ),
                   ),
