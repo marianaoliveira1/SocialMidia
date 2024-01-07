@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: Colors.white,
                           ),
                         ),
                         focusedBorder: const OutlineInputBorder(
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         filled: true,
-                        fillColor: Theme.of(context).colorScheme.primary,
+                        fillColor: Colors.white,
                         hintStyle: TextStyle(
                           color: Colors.grey[500],
                         ),
