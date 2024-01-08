@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
+import 'package:socialmidia/pages/home/widgtes/input_digitar_texto.dart';
 import 'package:socialmidia/utils/colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,10 +18,8 @@ class HomePage extends StatelessWidget {
 
     final textController = TextEditingController();
 
-    void pstMessage() {}
-
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: DefaultColors.preto,
       appBar: AppBar(
         title: Text(
           "The Wall",
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        backgroundColor: Colors.grey[900],
+        backgroundColor: DefaultColors.background,
         actions: [
           IconButton(
             onPressed: authService.signOut,
@@ -51,45 +50,12 @@ class HomePage extends StatelessWidget {
                 right: 20,
                 left: 20,
               ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: textController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintStyle: TextStyle(
-                          color: Colors.grey[500],
-                        ),
-                        hintText: 'Digite o que esta pensando',
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: pstMessage,
-                    icon: const Icon(Icons.arrow_forward_ios),
-                  )
-                ],
-              ),
+              child: InputDigitarTexto(textController: textController),
             ),
             Text(
               currentUser!.email!,
               style: GoogleFonts.raleway(
-                color: DefaultColors.preto,
+                color: DefaultColors.branco,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w300,
               ),
