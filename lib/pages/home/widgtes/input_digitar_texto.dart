@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:socialmidia/utils/colors.dart';
 
-class InputDigitarTexto extends StatelessWidget {
+class InputDigitarTexto extends StatefulWidget {
   const InputDigitarTexto({
     super.key,
     required this.textController,
@@ -14,14 +16,30 @@ class InputDigitarTexto extends StatelessWidget {
   final TextEditingController textController;
 
   @override
+  State<InputDigitarTexto> createState() => _InputDigitarTextoState();
+}
+
+class _InputDigitarTextoState extends State<InputDigitarTexto> {
+  final currentUser = FirebaseAuth.instance.currentUser;
+
+  @override
   Widget build(BuildContext context) {
-    void pstMessage() {}
+    void pstMessage() {
+      if (widget.textController.text.isNotEmpty) {
+        FirebaseFirestore.instance.collection('User Posts').add({
+          'Message': currentUser!.email,
+          'UserEmail': widget.textController.text,
+          'Timestamp': DateTime.now(),
+        });
+        widget.textController.clear();
+      }
+    }
 
     return Row(
       children: [
         Expanded(
           child: TextField(
-            controller: textController,
+            controller: widget.textController,
             style: GoogleFonts.raleway(
               color: DefaultColors.branco,
               fontSize: 13.sp,

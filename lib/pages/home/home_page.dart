@@ -47,19 +47,26 @@ class HomePage extends StatelessWidget {
           children: [
             Expanded(
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection('User Posts').orderBy("Timestamp", descending: false).snapshots(),
+                stream: FirebaseFirestore.instance.collection('User Posts').orderBy("TimeStamp", descending: false).snapshots(),
                 builder: (context, snapshots) {
                   if (snapshots.hasData) {
                     return ListView.builder(
+                      itemCount: snapshots.data!.docs.length,
                       itemBuilder: (context, index) {
-                        final posts = snapshots.data!.docs;
-                        return WallPost();
+                        final post = snapshots.data!.docs[index];
+                        return WallPost(
+                          message: post['Message'],
+                          user: post['UserEmail'],
+                        );
                       },
                     );
+                  } else if (snapshots.hasError) {
+                    return const Text("Erro ao carregar os dados");
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
                   }
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
                 },
               ),
             ),
