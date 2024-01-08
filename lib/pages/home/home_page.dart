@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/pages/home/widgtes/input_digitar_texto.dart';
 import 'package:socialmidia/utils/colors.dart';
+import 'package:socialmidia/widget/wall_post.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -43,6 +45,24 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            Expanded(
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance.collection('User Posts').orderBy("Timestamp", descending: false).snapshots(),
+                builder: (context, snapshots) {
+                  if (snapshots.hasData) {
+                    return ListView.builder(
+                      itemBuilder: (context, index) {
+                        final posts = snapshots.data!.docs;
+                        return WallPost();
+                      },
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 top: 15,
