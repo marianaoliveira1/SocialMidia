@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
-import 'package:socialmidia/pages/home/widgtes/input_digitar_texto.dart';
+
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/wall_post.dart';
 
@@ -20,11 +20,22 @@ class HomePage extends StatelessWidget {
 
     final textController = TextEditingController();
 
+    void pstMessage() {
+      if (textController.text.isNotEmpty) {
+        FirebaseFirestore.instance.collection('User Posts').add({
+          'Message': currentUser!.email,
+          'UserEmail': textController.text,
+          'Timestamp': DateTime.now(),
+        });
+        textController.clear();
+      }
+    }
+
     return Scaffold(
       backgroundColor: DefaultColors.preto,
       appBar: AppBar(
         title: Text(
-          "The Wall",
+          "Inicio",
           style: GoogleFonts.raleway(
             color: DefaultColors.branco,
             fontSize: 18.sp,
@@ -77,7 +88,45 @@ class HomePage extends StatelessWidget {
                 right: 20,
                 left: 20,
               ),
-              child: InputDigitarTexto(textController: textController),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: textController,
+                      style: GoogleFonts.raleway(
+                        color: DefaultColors.branco,
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: DefaultColors.background,
+                          ),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: DefaultColors.background,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: DefaultColors.background,
+                        hintStyle: const TextStyle(
+                          color: DefaultColors.cinzaClaro,
+                        ),
+                        hintText: 'Digite o que esta pensando',
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: pstMessage,
+                    icon: const Icon(Icons.arrow_forward_ios),
+                  )
+                ],
+              ),
             ),
             Text(
               currentUser!.email!,
