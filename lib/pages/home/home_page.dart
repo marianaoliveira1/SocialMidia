@@ -9,9 +9,14 @@ import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/wall_post.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final authService = Get.find<AuthController>();
@@ -29,6 +34,9 @@ class HomePage extends StatelessWidget {
         });
         textController.clear();
       }
+      setState(() {
+        textController.clear();
+      });
     }
 
     return Scaffold(
