@@ -15,12 +15,20 @@ class WallPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 15.h,
-        bottom: 5.h,
-        right: 20.h,
-        left: 20.h,
+    return Container(
+      decoration: BoxDecoration(
+        color: DefaultColors.background,
+        borderRadius: BorderRadius.circular(
+          10.r,
+        ),
+      ),
+      margin: EdgeInsets.only(
+        top: 25.h,
+        left: 25.h,
+        right: 25.h,
+      ),
+      padding: EdgeInsets.all(
+        25.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +38,7 @@ class WallPost extends StatelessWidget {
             user,
             style: GoogleFonts.raleway(
               color: DefaultColors.branco,
-              fontSize: 13.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -38,7 +46,7 @@ class WallPost extends StatelessWidget {
             message,
             style: GoogleFonts.raleway(
               color: DefaultColors.branco,
-              fontSize: 13.sp,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w300,
             ),
           )
