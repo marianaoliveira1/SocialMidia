@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
           'Message': currentUser!.email,
           'UserEmail': textController.text,
           'TimeStamp': DateTime.now(),
+          'Likes': [],
         });
         textController.clear();
       }
@@ -76,6 +77,8 @@ class _HomePageState extends State<HomePage> {
                         return WallPost(
                           user: post['UserEmail'],
                           message: post['Message'],
+                          postId: post.id,
+                          likes: List<String>.from(post['Likes'] ?? []),
                         );
                       },
                     );
