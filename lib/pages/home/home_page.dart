@@ -20,12 +20,12 @@ class HomePage extends StatelessWidget {
 
     final textController = TextEditingController();
 
-    void pstMessage() {
+    void postMessage() {
       if (textController.text.isNotEmpty) {
         FirebaseFirestore.instance.collection('User Posts').add({
           'Message': currentUser!.email,
           'UserEmail': textController.text,
-          'Timestamp': DateTime.now(),
+          'TimeStamp': DateTime.now(),
         });
         textController.clear();
       }
@@ -82,11 +82,11 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                top: 15,
-                bottom: 5,
-                right: 20,
-                left: 20,
+              padding: EdgeInsets.only(
+                top: 15.h,
+                bottom: 5.h,
+                right: 20.h,
+                left: 20.h,
               ),
               child: Row(
                 children: [
@@ -122,7 +122,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: pstMessage,
+                    onPressed: postMessage,
                     icon: const Icon(Icons.arrow_forward_ios),
                   )
                 ],

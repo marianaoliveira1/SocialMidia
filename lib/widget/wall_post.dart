@@ -15,25 +15,35 @@ class WallPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          user,
-          style: GoogleFonts.raleway(
-            color: DefaultColors.branco,
-            fontSize: 13.sp,
-            fontWeight: FontWeight.w300,
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 15.h,
+        bottom: 5.h,
+        right: 20.h,
+        left: 20.h,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            user,
+            style: GoogleFonts.raleway(
+              color: DefaultColors.branco,
+              fontSize: 13.sp,
+              fontWeight: FontWeight.w300,
+            ),
           ),
-        ),
-        Text(
-          message,
-          style: GoogleFonts.raleway(
-            color: DefaultColors.branco,
-            fontSize: 13.sp,
-            fontWeight: FontWeight.w300,
-          ),
-        )
-      ],
+          Text(
+            message,
+            style: GoogleFonts.raleway(
+              color: DefaultColors.branco,
+              fontSize: 13.sp,
+              fontWeight: FontWeight.w300,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
