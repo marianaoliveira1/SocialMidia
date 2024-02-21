@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "Inicio",
-          style: GoogleFonts.raleway(
+          style: GoogleFonts.poppins(
             color: DefaultColors.branco,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         final post = snapshots.data!.docs[index];
                         return WallPost(
-                          message: post['Message'],
                           user: post['UserEmail'],
+                          message: post['Message'],
                         );
                       },
                     );
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: TextField(
                       controller: textController,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.poppins(
                         color: DefaultColors.branco,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w500,
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Text(
               currentUser!.email!,
-              style: GoogleFonts.raleway(
+              style: GoogleFonts.poppins(
                 color: DefaultColors.branco,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w300,

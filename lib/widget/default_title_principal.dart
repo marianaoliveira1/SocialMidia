@@ -14,7 +14,7 @@ class DefaultTitlePrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.raleway(
+      style: GoogleFonts.poppins(
         color: DefaultColors.branco,
         fontSize: 30.sp,
         fontWeight: FontWeight.bold,

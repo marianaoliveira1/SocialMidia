@@ -29,7 +29,7 @@ class DefaultButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: GoogleFonts.raleway(
+          style: GoogleFonts.poppins(
             color: DefaultColors.preto,
             fontSize: 16.sp,
             fontWeight: FontWeight.bold,

@@ -24,7 +24,7 @@ class DefaultTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         obscureText: obscureText,
-        style: GoogleFonts.raleway(
+        style: GoogleFonts.poppins(
           color: DefaultColors.branco,
           fontSize: 20.sp,
         ),
@@ -32,7 +32,7 @@ class DefaultTextField extends StatelessWidget {
           prefixIcon: Icon(icon),
           prefixIconColor: DefaultColors.branco,
           labelText: labelText,
-          labelStyle: GoogleFonts.raleway(
+          labelStyle: GoogleFonts.poppins(
             color: DefaultColors.branco,
             fontSize: 16.sp,
           ),

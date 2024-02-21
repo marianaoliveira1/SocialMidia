@@ -74,7 +74,7 @@ class LoginPage extends StatelessWidget {
                       children: [
                         Text(
                           "Ainda não possi conta?  ",
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.poppins(
                             color: DefaultColors.branco,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
@@ -84,7 +84,7 @@ class LoginPage extends StatelessWidget {
                           onTap: onTap,
                           child: Text(
                             "Cadastrar",
-                            style: GoogleFonts.raleway(
+                            style: GoogleFonts.poppins(
                               color: DefaultColors.branco,
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,

@@ -91,7 +91,7 @@ class RegisterPage extends StatelessWidget {
                       children: [
                         Text(
                           "Já possui conta? ",
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.poppins(
                             color: DefaultColors.branco,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
@@ -101,7 +101,7 @@ class RegisterPage extends StatelessWidget {
                           onTap: onTap,
                           child: Text(
                             "Entrar",
-                            style: GoogleFonts.raleway(
+                            style: GoogleFonts.poppins(
                               color: DefaultColors.branco,
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
