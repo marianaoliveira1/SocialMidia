@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
 
 import 'package:socialmidia/utils/colors.dart';
+import 'package:socialmidia/widget/default_drawer.dart';
 import 'package:socialmidia/widget/wall_post.dart';
 
 class HomePage extends StatefulWidget {
@@ -62,6 +63,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      drawer: DefaultDrawer(),
       body: Center(
         child: Column(
           children: [
