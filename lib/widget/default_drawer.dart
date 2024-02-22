@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/widget/default_list_tile.dart';
 
 class DefaultDrawer extends StatelessWidget {
@@ -7,6 +9,7 @@ class DefaultDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authService = Get.find<AuthController>();
     return Drawer(
       backgroundColor: Colors.grey[900],
       child: Column(
@@ -27,11 +30,16 @@ class DefaultDrawer extends StatelessWidget {
             },
           ),
           DefaultListTile(
-            icon: Icons.settings,
-            title: 'Configurações',
+            icon: Icons.person,
+            title: 'Perfil',
             onTap: () {
-              Navigator.of(context).pushNamed('/settings');
+              Navigator.of(context).pushNamed('/profile');
             },
+          ),
+          DefaultListTile(
+            icon: Icons.logout,
+            title: 'Sair',
+            onTap: authService.signOut,
           ),
         ],
       ),

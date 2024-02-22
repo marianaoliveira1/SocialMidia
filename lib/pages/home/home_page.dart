@@ -2,9 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:socialmidia/controller/auth_controller.dart';
 
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_drawer.dart';
@@ -20,8 +19,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final authService = Get.find<AuthController>();
-
     final currentUser = FirebaseAuth.instance.currentUser;
 
     final textController = TextEditingController();
@@ -53,17 +50,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         backgroundColor: DefaultColors.background,
-        actions: [
-          IconButton(
-            onPressed: authService.signOut,
-            icon: const Icon(
-              Icons.logout,
-              color: DefaultColors.branco,
-            ),
-          )
-        ],
       ),
-      drawer: DefaultDrawer(),
+      drawer: const DefaultDrawer(),
       body: Center(
         child: Column(
           children: [
