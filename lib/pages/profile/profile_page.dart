@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/utils/colors.dart';
+import 'package:socialmidia/widget/default_text_box.dart';
 import 'package:socialmidia/widget/default_user_email.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -11,6 +12,42 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
+
+    Future<void> editField(String field) async {
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Editar $field'),
+            content: TextField(
+              decoration: InputDecoration(
+                hintText: 'Digite o novo $field',
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Cancelar',
+                  style: GoogleFonts.poppins(),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Salvar',
+                  style: GoogleFonts.poppins(),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
 
     return Scaffold(
       backgroundColor: DefaultColors.preto,
@@ -35,7 +72,19 @@ class ProfilePage extends StatelessWidget {
             size: 72.h,
             color: DefaultColors.branco,
           ),
-          DefaultUserEmail(currentUser: currentUser),
+          DefaultUserEmail(
+            currentUser: currentUser,
+          ),
+          DefaultTextBox(
+            sectionName: 'username',
+            text: 'mrnfernandes',
+            onPressed: () => editField('username'),
+          ),
+          DefaultTextBox(
+            sectionName: 'bio',
+            text: 'empty bio',
+            onPressed: () => editField('bio'),
+          ),
         ],
       ),
     );
