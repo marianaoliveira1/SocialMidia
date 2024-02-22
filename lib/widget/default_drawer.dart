@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:socialmidia/controller/auth_controller.dart';
 import 'package:socialmidia/widget/default_list_tile.dart';
+import 'package:socialmidia/widget/default_user_email.dart';
 
 class DefaultDrawer extends StatelessWidget {
   const DefaultDrawer({super.key});
@@ -10,6 +12,8 @@ class DefaultDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = Get.find<AuthController>();
+    final currentUser = FirebaseAuth.instance.currentUser;
+
     return Drawer(
       backgroundColor: Colors.grey[900],
       child: Column(
@@ -22,6 +26,7 @@ class DefaultDrawer extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          DefaultUserEmail(currentUser: currentUser),
           DefaultListTile(
             icon: Icons.home,
             title: 'Inicio',
@@ -35,6 +40,9 @@ class DefaultDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed('/profile');
             },
+          ),
+          Expanded(
+            child: Container(),
           ),
           DefaultListTile(
             icon: Icons.logout,

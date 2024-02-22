@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_drawer.dart';
+
 import 'package:socialmidia/widget/wall_post.dart';
 
 class HomePage extends StatefulWidget {
@@ -129,14 +130,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Text(
-              currentUser!.email!,
-              style: GoogleFonts.poppins(
-                color: DefaultColors.branco,
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w300,
-              ),
-            )
           ],
         ),
       ),
