@@ -5,16 +5,16 @@ import 'package:socialmidia/utils/colors.dart';
 
 class DefaultTextField extends StatelessWidget {
   final TextEditingController? controller;
-  final String labelText;
+  final String hintText;
   final bool obscureText;
   final IconData? icon;
 
   const DefaultTextField({
     super.key,
-    this.controller,
-    required this.labelText,
+    required this.controller,
+    required this.hintText,
     required this.obscureText,
-    this.icon,
+    required this.icon,
   });
 
   @override
@@ -30,10 +30,10 @@ class DefaultTextField extends StatelessWidget {
         ),
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
-          prefixIconColor: DefaultColors.branco,
-          labelText: labelText,
-          labelStyle: GoogleFonts.poppins(
-            color: DefaultColors.branco,
+          prefixIconColor: DefaultColors.branco.withOpacity(.6),
+          hintText: hintText,
+          hintStyle: GoogleFonts.poppins(
+            color: DefaultColors.branco.withOpacity(.6),
             fontSize: 16.sp,
           ),
           border: OutlineInputBorder(

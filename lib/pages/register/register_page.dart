@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -26,12 +28,17 @@ class RegisterPage extends StatelessWidget {
       final authService = Get.find<AuthController>();
 
       try {
-        await authService.signUpWithEmailAndPassword(
+        UserCredential userCredential = await authService.signUpWithEmailAndPassword(
           emailController.text,
           passwordController.text,
           nameController.text,
           usernameController.text,
         );
+
+        FirebaseFirestore.instance.collection("Users").doc(userCredential.user!.email).set({
+          'username': emailController.text.split('@')[0],
+          'bio': '',
+        });
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -65,25 +72,25 @@ class RegisterPage extends StatelessWidget {
                     DefaultTextField(
                       obscureText: false,
                       controller: nameController,
-                      labelText: 'Maria',
+                      hintText: 'Maria',
                       icon: Icons.person,
                     ),
                     DefaultTextField(
                       obscureText: false,
                       controller: usernameController,
-                      labelText: 'maria123',
+                      hintText: 'maria123',
                       icon: Icons.person_pin_circle_sharp,
                     ),
                     DefaultTextField(
                       obscureText: false,
                       controller: emailController,
-                      labelText: 'exemplo@email.com',
+                      hintText: 'exemplo@email.com',
                       icon: Icons.email,
                     ),
                     DefaultTextField(
                       obscureText: true,
                       controller: passwordController,
-                      labelText: 'senha',
+                      hintText: 'senha',
                       icon: Icons.lock,
                     ),
                     Row(
@@ -92,7 +99,7 @@ class RegisterPage extends StatelessWidget {
                         Text(
                           "Já possui conta? ",
                           style: GoogleFonts.poppins(
-                            color: DefaultColors.branco,
+                            color: DefaultColors.branco.withOpacity(.8),
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
@@ -102,7 +109,7 @@ class RegisterPage extends StatelessWidget {
                           child: Text(
                             "Entrar",
                             style: GoogleFonts.poppins(
-                              color: DefaultColors.branco,
+                              color: DefaultColors.branco.withOpacity(.9),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),

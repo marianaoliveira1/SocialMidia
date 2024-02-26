@@ -58,15 +58,15 @@ class LoginPage extends StatelessWidget {
                       height: 50.h,
                     ),
                     DefaultTextField(
+                      hintText: 'email@email.com',
                       obscureText: false,
                       controller: emailController,
-                      labelText: 'exemplo@email.com',
                       icon: Icons.email,
                     ),
                     DefaultTextField(
                       obscureText: true,
                       controller: passwordController,
-                      labelText: 'senha',
+                      hintText: 'senha',
                       icon: Icons.lock,
                     ),
                     Row(
@@ -75,7 +75,7 @@ class LoginPage extends StatelessWidget {
                         Text(
                           "Ainda não possi conta?  ",
                           style: GoogleFonts.poppins(
-                            color: DefaultColors.branco,
+                            color: DefaultColors.branco.withOpacity(.8),
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                           child: Text(
                             "Cadastrar",
                             style: GoogleFonts.poppins(
-                              color: DefaultColors.branco,
+                              color: DefaultColors.branco.withOpacity(.9),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),

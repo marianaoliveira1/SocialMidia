@@ -82,7 +82,7 @@ class ProfilePage extends StatelessWidget {
           ),
           DefaultTextBox(
             sectionName: 'bio',
-            text: 'empty bio',
+            text: '',
             onPressed: () => editField('bio'),
           ),
         ],
