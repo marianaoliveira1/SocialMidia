@@ -83,9 +83,8 @@ class _WallPostState extends State<WallPost> {
                 Text(
                   widget.message,
                   style: GoogleFonts.poppins(
-                    color: DefaultColors.branco,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w300,
+                    color: DefaultColors.branco.withOpacity(.6),
+                    fontSize: 10.sp,
                   ),
                 ),
                 SizedBox(
@@ -95,7 +94,7 @@ class _WallPostState extends State<WallPost> {
                   widget.user,
                   style: GoogleFonts.poppins(
                     color: DefaultColors.branco,
-                    fontSize: 16.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w300,
                   ),
                   textAlign: TextAlign.start,
@@ -119,7 +118,7 @@ class _WallPostState extends State<WallPost> {
                 widget.likes.length.toString(),
                 style: GoogleFonts.poppins(
                   color: DefaultColors.branco,
-                  fontSize: 12.sp,
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.w300,
                 ),
               ),

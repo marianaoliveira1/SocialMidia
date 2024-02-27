@@ -56,11 +56,14 @@ class DefaultTextBox extends StatelessWidget {
               )
             ],
           ),
-          Text(
-            text,
-            style: GoogleFonts.poppins(
-              color: DefaultColors.branco,
-              fontSize: 16.sp,
+          Padding(
+            padding: EdgeInsets.only(right: 5.h),
+            child: Text(
+              text,
+              style: GoogleFonts.poppins(
+                color: DefaultColors.branco,
+                fontSize: 16.sp,
+              ),
             ),
           ),
         ],
