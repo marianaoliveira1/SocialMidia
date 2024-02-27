@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +14,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
 
+    final usersCollection = FirebaseFirestore.instance.collection('Users');
+
     Future<void> editField(String field) async {
-      return showDialog(
+      String newValue = "";
+      await showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -23,6 +27,9 @@ class ProfilePage extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'Digite o novo $field',
               ),
+              onChanged: (value) {
+                newValue = value;
+              },
             ),
             actions: [
               TextButton(
@@ -35,9 +42,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () => Navigator.of(context).pop(newValue),
                 child: Text(
                   'Salvar',
                   style: GoogleFonts.poppins(),
@@ -47,6 +52,12 @@ class ProfilePage extends StatelessWidget {
           );
         },
       );
+
+      if (newValue.trim().isNotEmpty) {
+        await usersCollection.doc(currentUser!.email).update({
+          field: newValue
+        });
+      }
     }
 
     return Scaffold(
@@ -62,30 +73,51 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          SizedBox(
-            height: 50.h,
-          ),
-          Icon(
-            Icons.person,
-            size: 72.h,
-            color: DefaultColors.branco,
-          ),
-          DefaultUserEmail(
-            currentUser: currentUser,
-          ),
-          DefaultTextBox(
-            sectionName: 'username',
-            text: 'mrnfernandes',
-            onPressed: () => editField('username'),
-          ),
-          DefaultTextBox(
-            sectionName: 'bio',
-            text: '',
-            onPressed: () => editField('bio'),
-          ),
-        ],
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance.collection('Users').doc(currentUser!.email).snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final userData = snapshot.data!.data() as Map<String, dynamic>;
+            return ListView(
+              children: [
+                SizedBox(
+                  height: 50.h,
+                ),
+                Icon(
+                  Icons.person,
+                  size: 72.h,
+                  color: DefaultColors.branco,
+                ),
+                DefaultUserEmail(
+                  currentUser: currentUser,
+                ),
+                DefaultTextBox(
+                  sectionName: 'username',
+                  text: userData['username'] as String,
+                  onPressed: () => editField('username'),
+                ),
+                DefaultTextBox(
+                  sectionName: 'bio',
+                  text: userData['bio'],
+                  onPressed: () => editField('bio'),
+                ),
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                'Erro ao carregar dados',
+                style: GoogleFonts.poppins(
+                  color: DefaultColors.branco,
+                  fontSize: 18.sp,
+                ),
+              ),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
