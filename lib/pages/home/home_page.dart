@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-      backgroundColor: DefaultColors.preto,
+      backgroundColor: DefaultColors.background,
       appBar: AppBar(
         title: Text(
           "Inicio",

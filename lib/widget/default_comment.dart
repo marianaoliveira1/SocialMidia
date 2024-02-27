@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:socialmidia/utils/colors.dart';
 
 class DefaultComment extends StatelessWidget {
   final String text;
@@ -15,17 +18,53 @@ class DefaultComment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[700],
+        color: DefaultColors.backgroundComment,
         borderRadius: BorderRadius.circular(12),
       ),
+      padding: EdgeInsets.all(10.sp),
       child: Column(
         children: [
-          Text(text),
+          Text(
+            text,
+            style: GoogleFonts.poppins(
+              color: DefaultColors.branco,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(user),
-              const Text(" - "),
-              Text(time),
+              Text(
+                user,
+                style: GoogleFonts.poppins(
+                  color: DefaultColors.branco.withOpacity(
+                    .6,
+                  ),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Text(
+                " - ",
+                style: GoogleFonts.poppins(
+                  color: DefaultColors.branco.withOpacity(
+                    .6,
+                  ),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Text(
+                time,
+                style: GoogleFonts.poppins(
+                  color: DefaultColors.branco.withOpacity(
+                    .6,
+                  ),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
             ],
           )
         ],

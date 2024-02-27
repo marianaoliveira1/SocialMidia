@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: DefaultColors.cinzaEscuro,
+      backgroundColor: DefaultColors.backgroundPost,
       body: Stack(
         children: [
           Container(
