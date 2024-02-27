@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:socialmidia/helper/helper_methods.dart';
 
 import 'package:socialmidia/utils/colors.dart';
 import 'package:socialmidia/widget/default_drawer.dart';
@@ -69,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                           user: post['UserEmail'],
                           message: post['Message'],
                           postId: post.id,
+                          time: formatDate(post['TimeStamp']),
                           likes: List<String>.from(post['Likes'] ?? []),
                         );
                       },

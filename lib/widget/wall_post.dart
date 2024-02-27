@@ -14,6 +14,7 @@ class WallPost extends StatefulWidget {
   final String message;
   final String user;
   final String postId;
+  final String time;
   final List<String> likes;
 
   const WallPost({
@@ -22,6 +23,7 @@ class WallPost extends StatefulWidget {
     required this.user,
     required this.postId,
     required this.likes,
+    required this.time,
   });
 
   @override
@@ -146,12 +148,24 @@ class _WallPostState extends State<WallPost> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.message,
-                      style: GoogleFonts.poppins(
-                        color: DefaultColors.branco.withOpacity(.6),
-                        fontSize: 10.sp,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          widget.message,
+                          style: GoogleFonts.poppins(
+                            color: DefaultColors.branco.withOpacity(.6),
+                            fontSize: 10.sp,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          widget.time,
+                          style: GoogleFonts.poppins(
+                            color: DefaultColors.branco.withOpacity(.6),
+                            fontSize: 10.sp,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 7.h,
