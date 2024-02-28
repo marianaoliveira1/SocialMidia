@@ -184,9 +184,6 @@ class _WallPostState extends State<WallPost> {
               ),
             ],
           ),
-          SizedBox(
-            height: 10.h,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -228,7 +225,7 @@ class _WallPostState extends State<WallPost> {
             ],
           ),
           SizedBox(
-            height: 5.h,
+            height: 10.h,
           ),
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
