@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -5,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:socialmidia/helper/helper_methods.dart';
-import 'package:socialmidia/pages/home/comment_button.dart';
+
 import 'package:socialmidia/utils/colors.dart';
+import 'package:socialmidia/widget/default_button_icon.dart';
 import 'package:socialmidia/widget/default_comment.dart';
 import 'package:socialmidia/widget/like_button.dart';
 
@@ -122,6 +125,64 @@ class _WallPostState extends State<WallPost> {
     );
   }
 
+  void deletePost() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Post'),
+        content: const Text('Are you sure you want to delete this post?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text(
+              "Cancel",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              final commentDocs = await FirebaseFirestore.instance
+                  .collection("User Posts")
+                  .doc(widget.postId)
+                  .collection(
+                    "Comments",
+                  )
+                  .get();
+
+              for (var doc in commentDocs.docs) {
+                await FirebaseFirestore.instance
+                    .collection("User Posts")
+                    .doc(widget.postId)
+                    .collection(
+                      "Comments",
+                    )
+                    .doc(doc.id)
+                    .delete();
+
+                FirebaseFirestore.instance
+                    .collection("User Posts")
+                    .doc(widget.postId)
+                    .delete()
+                    .then((value) => print(
+                          "post deleted",
+                        ))
+                    .catchError(
+                      (error) => print("failed to delete post: $error"),
+                    );
+
+                Navigator.pop(context);
+              }
+            },
+            child: const Text(
+              "Delte",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -148,25 +209,6 @@ class _WallPostState extends State<WallPost> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          widget.message,
-                          style: GoogleFonts.poppins(
-                            color: DefaultColors.branco.withOpacity(.6),
-                            fontSize: 10.sp,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          widget.time,
-                          style: GoogleFonts.poppins(
-                            color: DefaultColors.branco.withOpacity(.6),
-                            fontSize: 10.sp,
-                          ),
-                        ),
-                      ],
-                    ),
                     SizedBox(
                       height: 7.h,
                     ),
@@ -179,10 +221,37 @@ class _WallPostState extends State<WallPost> {
                       ),
                       textAlign: TextAlign.start,
                     ),
+                    Row(
+                      children: [
+                        Text(
+                          widget.message,
+                          style: GoogleFonts.poppins(
+                            color: DefaultColors.branco.withOpacity(.5),
+                            fontSize: 9.sp,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          widget.time,
+                          style: GoogleFonts.poppins(
+                            color: DefaultColors.branco.withOpacity(.5),
+                            fontSize: 9.sp,
+                          ),
+                        ),
+                        const Spacer(),
+                        DefaultButtonIcon(
+                          icon: Icons.delete,
+                          onTap: deletePost,
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 10.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -208,7 +277,7 @@ class _WallPostState extends State<WallPost> {
               ),
               Row(
                 children: [
-                  CommentButton(onTap: showCommentDialog),
+                  DefaultButtonIcon(icon: Icons.comment, onTap: showCommentDialog),
                   SizedBox(
                     width: 5.w,
                   ),

@@ -1,20 +1,18 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CommentButton extends StatelessWidget {
+// ignore: must_be_immutable
+class DefaultButtonIcon extends StatelessWidget {
   void Function()? onTap;
-  CommentButton({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
+  final IconData? icon;
+  DefaultButtonIcon({super.key, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Icon(
-        Icons.comment,
+        icon,
         color: Colors.grey,
         size: 18.h,
       ),
